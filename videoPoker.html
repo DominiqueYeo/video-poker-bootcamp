@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Dom's Casino</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+  </head>
+
+  <body>
+    <div class="backScreen">
+      <div class="screenContainer justify-content-center">
+        <h1 id="header" class="justify-content-center">Dom's Casino!</h1>
+        <!-- Import program logic -->
+        <script src="globals.js" defer></script>
+        <script src="helperFunc.js" defer></script>
+        <script src="gameFunc.js" defer></script>
+        <script src="gameInit.js" defer></script>
+        <div class="headBoard">
+          <div class="instructions">
+            <h2>How to Play</h2>
+            <ol>
+              <li>Use the bet button to select your bet amount</li>
+              <li>Use the deal button to start your hand</li>
+              <li>
+                Select the cards you want to swap and use the swap button to
+                swap
+              </li>
+              <li>
+                Use the End button to calculate your wins and deal to start
+                again
+              </li>
+            </ol>
+          </div>
+        </div>
+        <div class="casinoFloor">
+          <div class="casinoTable">
+            <div class="cardContainer"></div>
+          </div>
+          <div class="buttonContainer"></div>
+        </div>
+      </div>
+    </div>
+    <audio src="audio\coins.ogg" id="coins"></audio>
+    <audio src="audio\shuffle.wav" id="shuffle"></audio>
+    <audio src="audio\contact1.wav" id="flip"></audio>
+    <audio src="audio\win.wav" id="win"></audio>
+    <audio src="audio\lose.wav" id="lose"></audio>
+  </body>
+</html>
