@@ -241,3 +241,45 @@ body {
   100% { opacity: 1; }
   /* 100% { opacity: 0; } */
 }
+
+@media only screen and (max-width: 400px) {
+  .card {
+  margin: 5px;
+  padding: 10px;
+  background-color: rgb(255, 255, 255);
+  width: 20%;
+  height: 50%;
+  border-radius: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-flow: column;
+  justify-content: space-evenly;
+  align-items: center;
+  font-size: 150%;
+}
+
+.bannerMessage{
+  /* animation: fadeInStay 2s linear 1 forwards; */
+  position: absolute;
+  font-family: 'Italianno';
+  font-size: 100%;
+  font-weight: 200;
+  color: #fbbe4b;
+  margin: 0 0 0 0;
+  top: 2%;
+}
+
+.instructions {
+  font-size: 120%;
+}
+.select {
+  outline-color: #f00528;
+  outline-width: 4px;
+  outline-style: solid;
+  margin-bottom: 40px;
+  /* border-color: red;
+  border-width: 1px;
+  border-style: solid; */
+}
+
+}
