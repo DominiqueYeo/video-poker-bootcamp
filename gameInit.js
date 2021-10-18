@@ -1,4 +1,7 @@
 /* eslint-disable no-undef */
+/**
+ * Function to initialise game elements
+ */
 const initGame = () => {
   buttonBet = document.createElement('button');
   buttonBet.classList.add('buttons');

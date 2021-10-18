@@ -1,11 +1,17 @@
-const prepCheck = () => {
-  const arrangedHand = JSON.parse(JSON.stringify(playerHand));
-  arrangedHand.sort((a, b) => ((a.rank - b.rank)));
-  return arrangedHand;
-};
+/* eslint-disable no-undef */
+/**
+ * Function to get a key given the object and value
+ * @param {object} object the object to be passed in
+ * @param {*} value the value to be passed in
+ * @returns
+ */
 
 const getKeyByValue = (object, value) => Object.keys(object).find((key) => object[key] === value);
 
+/**
+ * Function to fill a object with a tally of card names from playerHand
+ * @param {object} cardNameTally
+ */
 const fillNameTally = (cardNameTally) => {
   for (let i = 0; i < playerHand.length; i += 1) {
     const cardName = playerHand[i].name;
@@ -18,6 +24,10 @@ const fillNameTally = (cardNameTally) => {
   }
 };
 
+/**
+ * Function to fill a object with a tally of card ranks from playerHand
+ * @param {object} cardRankTally
+ */
 const fillRankTally = (cardRankTally) => {
   for (let i = 0; i < playerHand.length; i += 1) {
     const cardRank = playerHand[i].rank;
@@ -30,6 +40,10 @@ const fillRankTally = (cardRankTally) => {
   }
 };
 
+/**
+ * Function to fill a object with a tally of card suit from playerHand
+ * @param {object} cardSuitTally
+ */
 const fillSuitTally = (cardSuitTally) => {
   for (let i = 0; i < playerHand.length; i += 1) {
     const cardRank = playerHand[i].suit;
@@ -54,6 +68,10 @@ const fillSuitTally = (cardSuitTally) => {
 //   }
 // }
 
+/**
+ * Function to check the number of pairs in the player's hand
+ * @returns number of pairs found in the tally
+ */
 const checkNumOfPairs = () => {
   const cardNameTally = {};
   fillNameTally(cardNameTally);
@@ -67,6 +85,10 @@ const checkNumOfPairs = () => {
   return numPairs;
 };
 
+/**
+ * To check if three cards of the same number is found in the player's hand
+ * @returns true if three cards of the same name is found, if not , false
+ */
 const checkThree = () => {
   const cardNameTally = {};
   fillNameTally(cardNameTally);
@@ -83,6 +105,10 @@ const checkThree = () => {
   return false;
 };
 
+/**
+ * To check if there are pair found ranked Jack and above
+ * @returns true if card rank is 11,12,13 or 14. Else false
+ */
 const findPairRank = () => {
   const cardRankTally = {};
   fillRankTally(cardRankTally);
@@ -92,6 +118,10 @@ const findPairRank = () => {
   return false;
 };
 
+/**
+ * To check for straights in the player's hand
+ * @returns true if 5 consecutive card ranks are found in the tally. else false
+ */
 const checkStraight = () => {
   const cardRankTally = {};
   fillRankTally(cardRankTally);
@@ -108,6 +138,10 @@ const checkStraight = () => {
   return false;
 };
 
+/**
+ * Check for flush in player's hands
+ * @returns true if a suit's count in the tally is equals to 5. Else false
+ */
 const checkFlush = () => {
   const cardSuitTally = {};
   fillSuitTally(cardSuitTally);
@@ -124,6 +158,11 @@ const checkFlush = () => {
   return false;
 };
 
+/**
+ * To check for royal flush. This will be done together with the straight check and check
+ * if the tally starts with a 10.
+ * @returns true if the rank tally starts with a 10
+ */
 const checkRoyalFlush = () => {
   const cardRankTally = {};
   fillRankTally(cardRankTally);
@@ -134,6 +173,10 @@ const checkRoyalFlush = () => {
   return false;
 };
 
+/**
+ * To check if there is Jacks or Better in player's hand
+ * @returns multiplier of hand combo if true.else false
+ */
 const checkJacksBetter = () => {
   const numPairs = checkNumOfPairs();
   if (numPairs === 1 && findPairRank() === true) {
@@ -145,6 +188,10 @@ const checkJacksBetter = () => {
   return false;
 };
 
+/**
+ * To check if there is Two Pairs in player's hand
+ * @returns multiplier of hand combo if true.else false
+ */
 const checkTwoPairs = () => {
   const numPairs = checkNumOfPairs();
   if (numPairs === 2) {
@@ -153,6 +200,10 @@ const checkTwoPairs = () => {
   return false;
 };
 
+/**
+ * To check if there is Three Of A Kind in player's hand
+ * @returns multiplier of hand combo if true.else false
+ */
 const checkThreeOfAKind = () => {
   if (checkThree() === true && checkNumOfPairs() === 0) {
     return 3;
@@ -160,6 +211,10 @@ const checkThreeOfAKind = () => {
   return false;
 };
 
+/**
+ * To check if there is Full House in player's hand
+ * @returns multiplier of hand combo if true.else false
+ */
 const checkFullHouse = () => {
   if (checkThree() === true && checkNumOfPairs() === 1) {
     return 9;
@@ -167,6 +222,10 @@ const checkFullHouse = () => {
   return false;
 };
 
+/**
+ * To check if there is Four Of A Kind in player's hand
+ * @returns multiplier of hand combo if true.else false
+ */
 const checkFourOfAKind = () => {
   const cardNameTally = {};
   fillNameTally(cardNameTally);
@@ -183,6 +242,10 @@ const checkFourOfAKind = () => {
   return false;
 };
 
+/**
+ * To check if there is Straight Flush or Royal Flush in player's hand
+ * @returns multiplier of hand combo if true.else false
+ */
 const checkStraightOrRoyalFlush = () => {
   if (checkStraight() === true && checkFlush() === true && checkRoyalFlush() === false) {
     return 50;
@@ -193,6 +256,10 @@ const checkStraightOrRoyalFlush = () => {
   return false;
 };
 
+/**
+ * To check if there is Straight in player's hand
+ * @returns multiplier of hand combo if true.else false
+ */
 const handStraight = () => {
   if (checkStraight() === true && checkFlush() === false) {
     return 4;
@@ -200,6 +267,10 @@ const handStraight = () => {
   return false;
 };
 
+/**
+ * To check if there is Flush in player's hand
+ * @returns multiplier of hand combo if true.else false
+ */
 const handFlush = () => {
   if (checkFlush() === true && checkStraight() === false) {
     return 6;
@@ -207,10 +278,16 @@ const handFlush = () => {
   return false;
 };
 
+/**
+ * Check player's hand for all combinations of wins and return multiplier if exist
+ * @returns multiplier of combo found.Else false
+ */
 const handChecker = () => checkJacksBetter() || checkTwoPairs() || checkThreeOfAKind() || handStraight() || handFlush() || checkFullHouse() || checkFourOfAKind() || checkStraightOrRoyalFlush(); // eslint-disable-line
 
+/**
+ * Function to generate the possible score table according to bet amount
+ */
 const createScoreTable = () => {
-  //
   const table = document.createElement('table');
   table.classList.add('scoreTable');
   const header = table.createTHead();
@@ -231,6 +308,10 @@ const createScoreTable = () => {
   headBoard.replaceChild(table, headBoard.childNodes[1]);
 };
 
+/**
+ * helper function to play sound on demand
+ * @param {string} sound ID of the sound to play
+ */
 const playSound = (sound) => {
   const currentSound = document.querySelector(sound);
   currentSound.preload = 'auto';
@@ -238,6 +319,9 @@ const playSound = (sound) => {
   currentSound.play();
 };
 
+/**
+ * Function to highlight the combo of the player's hand on the score table
+ */
 const highlightCurrentHand = () => {
   if (!handChecker()) {
     if (currentID != '') {
@@ -257,12 +341,4 @@ const highlightCurrentHand = () => {
     currentID = document.querySelector(`#${refID}`);
     currentID.classList.add('highlightGreen');
   }
-};
-
-const showWinOrTryAgainMessage = (text) => {
-  messageEl = document.createElement('p');
-  const casinoTable = document.querySelector('.casinoTable');
-  messageEl.innerText = text;
-  messageEl.classList.add('aboveZ');
-  casinoTable.appendChild(messageEl);
 };

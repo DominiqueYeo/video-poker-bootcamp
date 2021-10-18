@@ -112,6 +112,11 @@ const createCard = (cardInfo) => {
   return card;
 };
 
+/**
+ * To change the selectedIndex value based on if the card is selected
+ * @param {html node} selectedCard the selected card's node
+ * @param {number} cardIndex the index of the card selected
+ */
 const cardSelect = (selectedCard, cardIndex) => {
   if (selectedIndex[cardIndex] === false) {
     selectedCard.classList.add('select');
@@ -123,6 +128,10 @@ const cardSelect = (selectedCard, cardIndex) => {
   console.log(selectedIndex);
 };
 
+/**
+ * To change the player's card based on the boolean value in selectedIndex
+ * @param {array} deck array of objects containing card information
+ */
 const swapCard = (deck) => {
   for (let i = 0; i < playerHand.length; i += 1) {
     if (selectedIndex[i] === true) {
@@ -131,6 +140,10 @@ const swapCard = (deck) => {
   }
 };
 
+/**
+ * To clear a html node of all of its child nodes
+ * @param {html node} container
+ */
 const clearCont = (container) => {
   const eleCount = container.childElementCount;
   for (let j = 0; j < eleCount; j += 1) {
@@ -138,6 +151,12 @@ const clearCont = (container) => {
   }
 };
 
+/**
+ * function that runs when the deal button is clicked
+ * checks the state of the dealFlag and runs in 3 states, deal first hand,
+ * swap selected cards if any and end round to calculate winnings or loss
+ * @param {array} deck array of objects containing card information
+ */
 const dealCards = (deck) => {
   const cardContainer = document.querySelector('.cardContainer');
   if (dealFlag === 0 && betAmount != 0) {
@@ -199,6 +218,9 @@ const dealCards = (deck) => {
   }
 };
 
+/**
+ * function to increment bet amount
+ */
 const betIncrement = () => {
   if (dealFlag === 0) {
     betAmount += 1;
