@@ -9,6 +9,7 @@ let tableElement;
 // Create the element for the card container
 let cardContainer;
 let walletElement;
+const messageEl = document.querySelector('.bannerMessage');
 
 // player wallet starts at 100
 let playerWallet = 100; // eslint-disable-line

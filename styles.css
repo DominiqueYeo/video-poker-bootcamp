@@ -13,7 +13,7 @@ body {
 }
 
 .backScreen {
-  background-color: #1b1b1b;
+  background-color: rgb(68, 11, 11) ;
   height: 100vh;
 }
 
@@ -24,7 +24,7 @@ body {
 
 #header {
   display: flex;
-  background-color: #1b1b1e;
+  /* background-color: #1b1b1e; */
   margin-top: 0;
   color: #fbbe4b;
 }
@@ -62,7 +62,7 @@ body {
   flex-wrap: wrap;
   width: 100%;
   min-height: 60%;
-  background-color: #1b1b1b;
+  /* background-color: #1b1b1b; */
   justify-content: center !important;
   align-items: center;
   margin: 0 auto;
@@ -120,7 +120,7 @@ body {
 }
 
 .scoreTable tr:nth-child(even) {
-  background-color: #67686e;
+  background-color: #1b1b1e;
 }
 
 .scoreTable tbody tr:hover {
@@ -156,10 +156,21 @@ body {
 
 .buttons {
   width: 30%;
-  background-color: #1b1b1e;
+  background-color: rgb(116, 25, 25);
   color: #fbbe4b;
   font-size: 2em;
-  border: 0px;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  box-shadow: 0 9px #999;
+}
+
+.buttons:hover {background-color: #d42f2f}
+
+.buttons:active {
+  background-color: #d42f2f;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
 }
 
 .buttonContainer {
@@ -191,6 +202,7 @@ body {
   outline-color: #f00528;
   outline-width: 4px;
   outline-style: solid;
+  margin-bottom: 40px;
   /* border-color: red;
   border-width: 1px;
   border-style: solid; */
@@ -202,6 +214,30 @@ body {
   margin: 0%;
 }
 
-.highlight {
+.highlightGreen {
+  background-color: rgb(54, 92, 39)!important;
+}
+
+.highlightRed {
   background-color: red!important;
+}
+
+.bannerMessage{
+  /* animation: fadeInStay 2s linear 1 forwards; */
+  position: absolute;
+  font-family: 'Italianno';
+  font-size: 200%;
+  font-weight: 200;
+  color: #fbbe4b;
+  margin: 0 0 0 0;
+  top: 2%;
+}
+
+
+
+
+@keyframes fadeInStay {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+  /* 100% { opacity: 0; } */
 }

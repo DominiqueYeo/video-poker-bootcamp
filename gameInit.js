@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 const initGame = () => {
   buttonBet = document.createElement('button');
   buttonBet.classList.add('buttons');
@@ -14,6 +15,7 @@ const initGame = () => {
   buttonContainer.appendChild(buttonBet);
   buttonContainer.appendChild(walletElement);
   buttonContainer.appendChild(buttonDeal);
+  messageEl.innerText = 'PLACE BET AND DEAL';
 
   buttonBet.addEventListener('click', betIncrement);
 

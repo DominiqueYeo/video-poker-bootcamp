@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /**
  * A function that gives a random index given a maximum number
  * @param {number} max {number} that limits the maximum index to be generated
@@ -140,6 +141,7 @@ const clearCont = (container) => {
 const dealCards = (deck) => {
   const cardContainer = document.querySelector('.cardContainer');
   if (dealFlag === 0 && betAmount != 0) {
+    messageEl.innerText = 'SELECT CARD TO SWAP';
     playSound('#shuffle');
     createScoreTable();
     clearCont(cardContainer);
@@ -160,23 +162,19 @@ const dealCards = (deck) => {
     // clearCont(cardContainer);
     swapCard(shuffledDeck);
     for (let i = 0; i < 5; i += 1) {
+      const currentCard = playerHand[i];
+      const cardElement = createCard(currentCard);
+      cardElement.classList.add('card');
+      cardElement.classList.remove('flipInY');
+      cardElement.id = `card${i}`;
       if (selectedIndex[i] === true) {
         playSound('#flip');
-        const currentCard = playerHand[i];
-        const cardElement = createCard(currentCard);
-        cardElement.classList.add('card');
-        cardElement.classList.remove('flipInY');
         cardElement.classList.add('fadeInDown');
-        cardElement.id = `card${i}`;
-        cardContainer.replaceChild(cardElement, cardContainer.childNodes[i]);
       }
-      // const currentCard = playerHand[i];
-      // const cardElement = createCard(currentCard);
-      // cardElement.classList.add('card');
-      // cardElement.id = `card${i}`;
-      // cardContainer.appendChild(cardElement);
+      cardContainer.replaceChild(cardElement, cardContainer.childNodes[i]);
     }
     buttonDeal.innerText = 'End';
+    messageEl.innerText = 'PRESS END TO END ROUND';
     highlightCurrentHand();
     dealFlag = 2;
   } else if (dealFlag === 2) {
@@ -184,7 +182,9 @@ const dealCards = (deck) => {
     if (handChecker()) {
       winMultiplier = handChecker();
       playSound('#win');
+      messageEl.innerText = 'WIN';
     } else {
+      messageEl.innerText = 'TRY AGAIN';
       playSound('#lose');
     }
     highlightCurrentHand();

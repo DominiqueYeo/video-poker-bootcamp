@@ -241,18 +241,28 @@ const playSound = (sound) => {
 const highlightCurrentHand = () => {
   if (!handChecker()) {
     if (currentID != '') {
-      currentID.classList.remove('highlight');
+      currentID.classList.remove('highlightRed');
+      currentID.classList.remove('highlightGreen');
     }
     const refID = getKeyByValue(refScoreObject, 0);
     currentID = document.querySelector(`#${refID}`);
-    currentID.classList.add('highlight');
+    currentID.classList.add('highlightRed');
   }
   if (handChecker()) {
     if (currentID != '') {
-      currentID.classList.remove('highlight');
+      currentID.classList.remove('highlightRed');
+      currentID.classList.remove('highlightGreen');
     }
     const refID = getKeyByValue(refScoreObject, handChecker());
     currentID = document.querySelector(`#${refID}`);
-    currentID.classList.add('highlight');
+    currentID.classList.add('highlightGreen');
   }
+};
+
+const showWinOrTryAgainMessage = (text) => {
+  messageEl = document.createElement('p');
+  const casinoTable = document.querySelector('.casinoTable');
+  messageEl.innerText = text;
+  messageEl.classList.add('aboveZ');
+  casinoTable.appendChild(messageEl);
 };
