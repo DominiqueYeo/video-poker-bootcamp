@@ -56,6 +56,8 @@ body {
   height: 30vh;
   border-color: #fbbe4b;
   border-style: solid;
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 .casinoFloor {
   display: flex;
@@ -230,7 +232,7 @@ body {
   font-weight: 200;
   color: #fbbe4b;
   margin: 0 0 0 0;
-  top: 2%;
+  top: 5%;
 }
 
 
@@ -242,7 +244,7 @@ body {
   /* 100% { opacity: 0; } */
 }
 
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 450px) {
   .card {
   margin: 5px;
   padding: 10px;
@@ -266,7 +268,7 @@ body {
   font-weight: 200;
   color: #fbbe4b;
   margin: 0 0 0 0;
-  top: 2%;
+  top: 8%;
 }
 
 .instructions {
@@ -280,6 +282,11 @@ body {
   /* border-color: red;
   border-width: 1px;
   border-style: solid; */
+}
+
+.scoreTable {
+  width: 100%;
+  font-size: 125%;
 }
 
 }

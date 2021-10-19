@@ -126,6 +126,7 @@ const cardSelect = (selectedCard, cardIndex) => {
     selectedIndex[cardIndex] = false;
   }
   console.log(selectedIndex);
+  calculateProbability(shuffledDeck);
 };
 
 /**
@@ -177,6 +178,7 @@ const dealCards = (deck) => {
       buttonDeal.innerText = 'Swap';
     }
     highlightCurrentHand();
+    calculateProbability(shuffledDeck);
   } else if (dealFlag === 1) {
     // clearCont(cardContainer);
     swapCard(shuffledDeck);
@@ -198,8 +200,8 @@ const dealCards = (deck) => {
     dealFlag = 2;
   } else if (dealFlag === 2) {
     let winMultiplier = -1;
-    if (handChecker()) {
-      winMultiplier = handChecker();
+    if (handChecker(playerHand)) {
+      winMultiplier = handChecker(playerHand);
       playSound('#win');
       messageEl.innerText = 'WIN';
     } else {
